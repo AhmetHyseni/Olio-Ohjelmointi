@@ -1,8 +1,13 @@
 import random
 import time
 
+class Olento:
+    def __init__(self, nimi, rohkeus, katseen_voima):
+        self.nimi = nimi
+        self.rohkeus = rohkeus + random.randint(rohkeus,8)
+        self.katseen_voima = katseen_voima + random.randint(katseen_voima,4)
 
-class Peikko:
+class Peikko(Olento):
     """Luokka, joka kuvaa Peikon.
 
     :ivar nimi: peikon nimi, arvotaan
@@ -21,11 +26,12 @@ class Peikko:
     RIEMUTAVUT = ("Agh", "Ugh", "Ourgh", "Drar", "Brar",
                   "Dza", "Gra", "Gur", "Rah", "Urgh", "Ra")
 
-    def __init__(self):
+    def __init__(self, rohkeus = 4, katseen_voima = 4):
         """Konstruktori."""
-        self.nimi = self._arvo_sanat(self.NIMITAVUT, 3, "-")
-        self.rohkeus = random.randint(4, 8)
-        self.katseen_voima = random.randint(2, 4)
+        nimi = self._arvo_sanat(self.NIMITAVUT, 3, "-")
+        self.rohkeus = rohkeus
+        self.katseen_voima = katseen_voima
+        super().__init__(nimi, rohkeus, katseen_voima)
 
     def _arvo_sanat(self, tavut, n, erotin, p=0.5):
         """Muodostaa satunnaisen tekstin annetuista tavuista.
@@ -60,19 +66,20 @@ class Peikko:
 
 
 # Kirjoita luokka Sankari tähän.
-class Sankari:
+class Sankari(Olento):
     """
     Luokka edustaa sankarihahmoa pelissä. Sankarilla on nimi, rohkeus ja katseen voima. 
     Lisäksi hänellä on metodi arvo_hurraus, joka palauttaa satunnaisen merkkijonon. 
     """
 
-    def __init__(self, nimi):
+    def __init__(self, nimi, rohkeus = 4, katseen_voima = 4):
         """
         Luo uuden sankari-olion annetulla nimellä, satunnaisella rohkeudella ja satunnaisella katseen voimalla.
         """
         self.nimi = nimi
-        self.rohkeus = random.randint(4, 8)
-        self.katseen_voima = random.randint(2, 4)
+        self.rohkeus = rohkeus
+        self.katseen_voima = katseen_voima
+        super().__init__(nimi, rohkeus, katseen_voima)
 
     def arvo_hurraus(self):
         """
