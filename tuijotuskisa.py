@@ -65,6 +65,7 @@ class Peikko(Olento):
         return self._arvo_sanat(self.RIEMUTAVUT, 8, " ", 0.7)
 
 class Vuorenpeikko(Peikko):
+    #Tässä on nimitavu- ja riemutavuvalinnat
     NIMITAVUT = ("Baz", "Garo", "Gu", "Giui", "Ambatukam",
                  "Kazham", "Bru", "Hurr", "Gyat", "Gyal")
     RIEMUTAVUT = ("Argh", "Urgh", "Ough", "Augh", "Grr",
@@ -75,6 +76,7 @@ class Vuorenpeikko(Peikko):
         super().__init__(rohkeus, katseen_voima)
 
 class Luolapeikko(Peikko):
+    #Tässä on nimitavu- ja riemutavuvalinnat
     NIMITAVUT = ("Foo", "Garu", "Zing", "Zung", "Kang",
                  "Dreamybull", "Baro", "Cum", "Ambatublow", "Kar")
     RIEMUTAVUT = ("Aghu", "Ught", "Ourgheto", "Dram", "Bram",
