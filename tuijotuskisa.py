@@ -2,10 +2,11 @@ import random
 import time
 
 class Olento:
+    #Luoo/Arpoo nimi, rohkeus ja katseen_voima
     def __init__(self, nimi, rohkeus, katseen_voima):
         self.nimi = nimi
         self.rohkeus = rohkeus + random.randint(rohkeus,8)
-        self.katseen_voima = katseen_voima + random.randint(katseen_voima,4)
+        self.katseen_voima = katseen_voima + random.randint(katseen_voima,8)
 
 class Peikko(Olento):
     """Luokka, joka kuvaa Peikon.
@@ -29,8 +30,6 @@ class Peikko(Olento):
     def __init__(self, rohkeus = 4, katseen_voima = 4):
         """Konstruktori."""
         nimi = self._arvo_sanat(self.NIMITAVUT, 3, "-")
-        self.rohkeus = rohkeus
-        self.katseen_voima = katseen_voima
         super().__init__(nimi, rohkeus, katseen_voima)
 
     def _arvo_sanat(self, tavut, n, erotin, p=0.5):
@@ -63,6 +62,24 @@ class Peikko(Olento):
         :rtype: str
         """
         return self._arvo_sanat(self.RIEMUTAVUT, 8, " ", 0.7)
+
+class Vuorenpeikko(Peikko):
+    NIMITAVUT = ("Baz", "Garo", "Gu", "Giui", "Ambatukam",
+                 "Kazham", "Bru", "Hurr", "Gyat", "Gyal")
+    RIEMUTAVUT = ("Argh", "Urgh", "Ough", "Augh", "Grr",
+                  "Dzaza", "Grat", "Gurit", "Rahe", "Urgha", "Rarr")
+
+    def __init__(self, rohkeus = 6, katseen_voima = 4):
+        super().__init__(rohkeus, katseen_voima)
+
+class Luolapeikko(Peikko):
+    NIMITAVUT = ("Foo", "Garu", "Zing", "Zung", "Kang",
+                 "Dreamybull", "Baro", "Cum", "Ambatublow", "Kar")
+    RIEMUTAVUT = ("Aghu", "Ught", "Ourgheto", "Dram", "Bram",
+                  "Dzaz", "Grai", "Gurw", "Rahb", "Urghe", "Rizz")
+
+    def __init__(self, rohkeus = 4, katseen_voima = 6):
+        super().__init__(rohkeus, katseen_voima)
 
 
 # Kirjoita luokka Sankari tähän.
@@ -169,7 +186,9 @@ while sankari.rohkeus > 0:
     time.sleep(0.7)
 
     # Tulostetaan vastaan tulevan peikon tiedot.
-    peikko = Peikko()
+    lista = [Peikko, Vuorenpeikko, Luolapeikko]
+    valitse_peikko = random.choice(lista)
+    peikko = valitse_peikko()
     peikon_tiedot = peikko.nimi + " [" + str(peikko.rohkeus) + "]"
     print("Vastaan tulee hurja %s!" % peikon_tiedot)
     time.sleep(1)
