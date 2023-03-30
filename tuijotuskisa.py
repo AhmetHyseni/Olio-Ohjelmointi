@@ -26,10 +26,11 @@ class Peikko(Olento):
                  "Kazah", "Bar", "Bazh", "Ragh", "Rudz")
     RIEMUTAVUT = ("Agh", "Ugh", "Ourgh", "Drar", "Brar",
                   "Dza", "Gra", "Gur", "Rah", "Urgh", "Ra")
-
+    
     def __init__(self, rohkeus = 4, katseen_voima = 4):
         """Konstruktori."""
         nimi = self._arvo_sanat(self.NIMITAVUT, 3, "-")
+        #Vie tämä tieto Olento luokkaan
         super().__init__(nimi, rohkeus, katseen_voima)
 
     def _arvo_sanat(self, tavut, n, erotin, p=0.5):
@@ -70,6 +71,7 @@ class Vuorenpeikko(Peikko):
                   "Dzaza", "Grat", "Gurit", "Rahe", "Urgha", "Rarr")
 
     def __init__(self, rohkeus = 6, katseen_voima = 4):
+        #Vie teitoa Peikko luokkaan
         super().__init__(rohkeus, katseen_voima)
 
 class Luolapeikko(Peikko):
@@ -79,6 +81,7 @@ class Luolapeikko(Peikko):
                   "Dzaz", "Grai", "Gurw", "Rahb", "Urghe", "Rizz")
 
     def __init__(self, rohkeus = 4, katseen_voima = 6):
+        #Vie teitoa Peikko luokkaan
         super().__init__(rohkeus, katseen_voima)
 
 
@@ -187,6 +190,7 @@ while sankari.rohkeus > 0:
 
     # Tulostetaan vastaan tulevan peikon tiedot.
     lista = [Peikko, Vuorenpeikko, Luolapeikko]
+    #Valitsee satunnaisen peikko luokan
     valitse_peikko = random.choice(lista)
     peikko = valitse_peikko()
     peikon_tiedot = peikko.nimi + " [" + str(peikko.rohkeus) + "]"
